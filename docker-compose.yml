@@ -1,0 +1,25 @@
+version: '2'
+services:
+  db:
+    image: mariadb
+    volumes:
+      - "./data/db:/var/lib/mysql"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: the_db_root_password
+      MYSQL_DATABASE: concrete5
+      MYSQL_USER: concrete5
+      MYSQL_PASSWORD: concrete5
+
+  concrete5:
+    build: .
+    volumes:
+      - "./concrete5:/var/www/html"
+    depends_on:
+      - db
+    links:
+      - db
+    ports:
+      - "8000:80"
+    restart: always
+

@@ -1,0 +1,6 @@
+#!/bin/bash
+git clone https://github.com/concrete5/concrete5.git
+cp -f .htaccess concrete5
+cd concrete5
+docker run --rm -v $(pwd):/app -v ~/.ssh:/root/.ssh composer/composer install
+chmod -R 0777 packages/ application/config/ application/files/
