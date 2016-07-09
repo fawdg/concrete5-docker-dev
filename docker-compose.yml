@@ -4,7 +4,6 @@ services:
     image: mariadb
     volumes:
       - "./data/db:/var/lib/mysql"
-    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: the_db_root_password
       MYSQL_DATABASE: concrete5
@@ -21,5 +20,4 @@ services:
       - db
     ports:
       - "8000:80"
-    restart: always
 
